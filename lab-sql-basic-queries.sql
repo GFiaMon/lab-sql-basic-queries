@@ -22,7 +22,7 @@ SELECT first_name from staff;
 SELECT distinct release_year from film;
 
 -- 	- 5.1 Determine the number of stores that the company has.
-SELECT COUNT(store_id) FROM store;
+SELECT COUNT(DISTINCT store_id) FROM store;
 
 
 -- 	- 5.2 Determine the number of employees that the company has.  WRONG??
@@ -31,7 +31,7 @@ SELECT count(DISTINCT staff_id) from staff;
 
 -- - 5.3 Determine how many films are available for rent and how many have been rented.
 select count(film_id) from film;
-select count(distinct(film_id)) from inventory; -- There are 42 Films for rent
+select count(distinct(film_id)) from rental; -- There are 42 Films for rent
 
 -- - 5.4 Determine the number of distinct last names of the actors in the database.
 select distinct last_name from actor;
