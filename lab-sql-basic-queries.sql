@@ -26,7 +26,7 @@ SELECT COUNT(store_id) FROM store;
 
 
 -- 	- 5.2 Determine the number of employees that the company has.  WRONG??
-SELECT count(first_name) from staff;
+SELECT count(DISTINCT staff_id) from staff;
 
 
 -- - 5.3 Determine how many films are available for rent and how many have been rented.
