@@ -30,11 +30,13 @@ SELECT count(DISTINCT staff_id) from staff;
 
 
 -- - 5.3 Determine how many films are available for rent and how many have been rented.
-select count(film_id) from film;
-select count(distinct(film_id)) from rental; -- There are 42 Films for rent
-
+					-- To count films available for rent, assume each entry in the inventory table represents a rentable film
+SELECT COUNT(*) as available_films FROM inventory;
+					-- To count how many films have been rented, consider the rentals table
+SELECT COUNT(DISTINCT inventory_id) as rented_films FROM rental;
+                    
 -- - 5.4 Determine the number of distinct last names of the actors in the database.
-select distinct last_name from actor;
+SELECT COUNT(DISTINCT last_name) as distinct_actor_last_names FROM actor;
 
 -- 6 Retrieve the 10 longest films.
 select title, length from film ORDER BY length desc limit 10;
@@ -46,17 +48,14 @@ where first_name = 'Scarlett';
 
 -- 	- 7.2 Retrieve all movies that have ARMAGEDDON in their title and have a duration longer than 100 minutes. 
 -- 		- Hint: use LIKE operator. More information here.
-SELECT 
-    *
-FROM
-    film
-WHERE
-    title LIKE '%ARMAGEDDON%'
-        AND length > 100;
+
+SELECT title, length FROM film
+WHERE title LIKE '%ARMAGEDDON%' AND length > 100;
 
 -- 	- 7.3 Determine the number of films that include Behind the Scenes content
 SELECT 
     COUNT(*)
+    AS films_with_bts
 FROM
     film
 WHERE
